@@ -1,0 +1,7 @@
+{
+  "require":
+  {
+    "dspbee/pivasic": "@dev",
+    "swiftmailer/swiftmailer": "@stable"
+  }
+}
