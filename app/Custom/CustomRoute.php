@@ -14,6 +14,9 @@ class CustomRoute implements IRoute
 {
 
     /**
+     * @param string $packageRoot
+     * @param Request $request
+     *
      * @return \Dspbee\Core\Response|null
      */
     public function getResponse($packageRoot, Request $request)
