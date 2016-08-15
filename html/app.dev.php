@@ -21,6 +21,7 @@ if (
     exit('You are not allowed to access this file. Check "' . basename(__FILE__) . '" for more information.');
 }
 
+require dirname(__FILE__) . '/config.php';
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 /**
@@ -30,19 +31,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 \Dspbee\Bundle\Debug\Wrap::register();
 
 try {
-    /**
-     * Process request and send response.
-     */
-    $app = new Dspbee\Core\Application(
-        dirname(__DIR__) . '/app/',
-        ['ru'],
-        ['Control', 'Custom']
-    );
-    $app->run(
-        [
-            'Custom' => 'CustomRoute'
-        ]
-    )->send();
+    (new \Dspbee\Core\Application(LC_APP_ROOT))->run(LC_LANGUAGE_LIST, LC_PACKAGE_LIST, LC_ROUTE_CLASS_LIST)->send();
 } catch (Throwable $e) {
     \Dspbee\Bundle\Debug\Wrap::handleException($e);
 }
